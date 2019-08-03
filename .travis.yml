@@ -8,6 +8,9 @@ compiler:
   - gcc
 
 env:
+  global:
+    - PG_CPPFLAGS="-fprofile-arcs -ftest-coverage -O0"
+    - SHLIB_LINK=-lgcov
   matrix:
     - PG=12 COMPONENT=12
     - PG=11
@@ -16,6 +19,8 @@ env:
     - PG=9.5
 
 before_install:
+  - gcc --version
+  - gcov --version
   - sudo /etc/init.d/postgresql stop
   - sudo apt-get -y --purge remove postgresql libpq-dev libpq5 postgresql-client-common postgresql-common
   - sudo rm -rf /var/lib/postgresql
