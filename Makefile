@@ -1,4 +1,5 @@
-MODULES = periods
+MODULE_big = periods
+OBJS = periods.o
 EXTENSION = periods
 DOCS = README.periods
 
